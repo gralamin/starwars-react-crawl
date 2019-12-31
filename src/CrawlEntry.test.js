@@ -1,20 +1,13 @@
 import React from "react";
-import { createMemoryHistory } from "history";
-import { Route, Router } from "react-router-dom";
+import { Route, MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 import CrawlEntry from "./CrawlEntry";
 
 test("renders button by default", () => {
-  const history = createMemoryHistory();
   const { getByText } = render(
-    <Router history={history}>
-      <Route path="/:id">
-        <CrawlEntry />
-      </Route>
-    </Router>,
-    {
-      route: "/test"
-    }
+    <MemoryRouter initialEntries={["/crawl/test"]}>
+      <Route path="/crawl/:id" children={props => <CrawlEntry {...props} />} />
+    </MemoryRouter>
   );
   const el = getByText(/start/i);
   expect(el).toBeInTheDocument();

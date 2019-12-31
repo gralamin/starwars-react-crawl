@@ -1,25 +1,43 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import data from "./data.json";
+import CrawlEntry from "./CrawlEntry";
+import "./index.css";
 
 function App() {
+  const sortedKeys = Object.keys(data).sort((entryA, entryB) => {
+    const keyA = data[entryA].displayText || entryA;
+    const keyB = data[entryB].displayText || entryB;
+    return keyA.localeCompare(keyB);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route
+          path="/crawl/:id"
+          children={props => <CrawlEntry {...props} />}
+        />
+        <Route path="/">
+          <div className="card">
+            <div className="card-inner">
+              <h1>Crawls</h1>
+              <ul>
+                {sortedKeys.map(entry => {
+                  return (
+                    <li key={entry}>
+                      <Link to={`/crawl/${entry}`}>
+                        {data[entry].displayText || entry}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

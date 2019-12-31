@@ -45,7 +45,8 @@ class CrawlEntry extends React.PureComponent {
       <Crawl
         episodeNumberText={crawlData.episodeNumberText}
         episodeTitle={crawlData.episodeTitle}
-        timeout={95000}
+        timeout={90000}
+        onEnd={this.onDone}
       >
         {text.map(child => {
           return <p key={getKey()}>{child}</p>;

@@ -10,8 +10,10 @@ class CrawlEntry extends React.PureComponent {
     this.audioRef = React.createRef();
     this.onClick = this.onClick.bind(this);
     this.onDone = this.onDone.bind(this);
+    this.onLoad = this.onLoad.bind(this);
     this.state = {
-      playing: false
+      playing: false,
+      loading: true
     };
   }
 
@@ -31,15 +33,30 @@ class CrawlEntry extends React.PureComponent {
     };
     return (
       <div>
-        <Audio ref={this.audioRef} />
+        <Audio ref={this.audioRef} onCanPlay={this.onLoad} />
         {this.renderPlaying(crawlData, text, getKey)}
       </div>
     );
   }
 
   renderPlaying(crawlData, text, getKey) {
+    if (this.state.loading) {
+      return (
+        <div style={{ margin: "6rem" }}>
+          <img
+            src="https://cdn.dribbble.com/users/361263/screenshots/3051905/imperial_emblem.gif?vid=1"
+            alt="loader"
+            data-testid="loader"
+          />
+        </div>
+      );
+    }
     if (!this.state.playing) {
-      return <button onClick={this.onClick}>Start</button>;
+      return (
+        <div style={{ margin: "6rem" }}>
+          <button onClick={this.onClick}>Start</button>
+        </div>
+      );
     }
     return (
       <Crawl
@@ -59,6 +76,12 @@ class CrawlEntry extends React.PureComponent {
     this.audioRef.current.play();
     this.setState({
       playing: true
+    });
+  }
+
+  onLoad() {
+    this.setState({
+      loading: false
     });
   }
 

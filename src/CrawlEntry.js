@@ -3,6 +3,8 @@ import React from "react";
 import data from "./data.json";
 import Audio from "./Audio";
 import Crawl from "./Crawl";
+import "./entry.css";
+import imperialLoader from "./imperial_loader.gif";
 
 class CrawlEntry extends React.PureComponent {
   constructor(props) {
@@ -42,13 +44,20 @@ class CrawlEntry extends React.PureComponent {
   renderPlaying(crawlData, text, getKey) {
     if (this.state.loading) {
       return (
-        <div style={{ margin: "6rem" }}>
+        <React.Fragment>
           <img
-            src="https://cdn.dribbble.com/users/361263/screenshots/3051905/imperial_emblem.gif?vid=1"
+            src={imperialLoader}
             alt="loader"
             data-testid="loader"
+            width="400px"
           />
-        </div>
+          <div style={{ margin: "6rem" }}>
+            Loader image from{" "}
+            <a href="https://dribbble.com/shots/3051905-Imperial-Loading-Animation">
+              Dripple
+            </a>
+          </div>
+        </React.Fragment>
       );
     }
     if (!this.state.playing) {
@@ -80,9 +89,13 @@ class CrawlEntry extends React.PureComponent {
   }
 
   onLoad() {
-    this.setState({
-      loading: false
-    });
+    setTimeout(
+      () =>
+        this.setState({
+          loading: false
+        }),
+      1000
+    );
   }
 
   onDone() {

@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/crawl/2020/c/:id" children={props => <CrawlEntry {...props} />} />
+        <Route path="/crawl/2020/:id" children={props => <CrawlEntry {...props} />} />
         <Route path="/crawl/2020">
           <div className="card">
             <div className="card-inner">
@@ -28,7 +28,7 @@ function App() {
                 {sortedKeys.map(entry => {
                   return (
                     <li key={entry}>
-                      <NavLink to={`/crawl/2020/c/${entry}`}>
+                      <NavLink to={`/crawl/2020/${entry}`}>
                         {data[entry].displayText || entry}
                       </NavLink>
                     </li>

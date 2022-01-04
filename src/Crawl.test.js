@@ -1,5 +1,5 @@
 import React from "react";
-import { render, wait } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import Crawl from "./Crawl";
 import data from "./data.json";
 
@@ -95,5 +95,6 @@ test("Calls Crawl onEnd when done", async () => {
       })}
     </Crawl>
   );
-  await wait(() => expect(onEnd.mock.calls.length).toBe(1));
+
+  await waitFor(() => expect(onEnd.mock.calls.length).toBe(1));
 });

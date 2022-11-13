@@ -15,9 +15,11 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^5.0.0",
     "url-parse": "^1.5.6",
     "ws": "^6.2.2"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

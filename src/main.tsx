@@ -6,16 +6,17 @@ import Root from "./routes/Root";
 import RootLoader from "./routes/Root.loader";
 import Entry from "./routes/Entry";
 import EntryLoader from "./routes/Entry.loader";
+import RouteMap from "./routes/Routemap";
 
 const router = createBrowserRouter([
   {
     // /crawl/2020/
-    path: "/",
+    path: RouteMap.root,
     element: <Root />,
     loader: RootLoader as LoaderFunction,
   },
   {
-    path: "/:id",
+    path: RouteMap.entry,
     element: <Entry />,
     loader: EntryLoader as LoaderFunction,
   },

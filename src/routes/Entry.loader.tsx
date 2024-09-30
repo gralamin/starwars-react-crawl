@@ -3,6 +3,13 @@ import { DataJson } from "../CrawlData";
 
 const data = _data as DataJson;
 
-export default async function loader({ params }) {
+/*
+interface LoaderParams {
+  params: {
+    id: string
+  }
+}*/
+
+export default async function loader({ params }: any) {
   return { entry: data[params.id] };
 }

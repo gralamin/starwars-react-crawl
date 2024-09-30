@@ -2,14 +2,20 @@ import { vi, expect, test, beforeEach, afterEach, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
 import data from "./data.json";
 import Crawl from "./Crawl";
+import { FC, Key } from "react";
 
 const { test: testData } = data;
 
 const testText = testData.text.split("\n");
 
-function Child({ key, text }) {
-  return <div key={key}>{text}</div>;
+interface ChildProps {
+  key: Key;
+  text: string;
 }
+
+const Child: FC<ChildProps> = ({ key, text }) => {
+  return <div key={key}>{text}</div>;
+};
 
 const children = testText.map((child, index) => {
   return Child({ key: index, text: child });

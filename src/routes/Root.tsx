@@ -1,8 +1,12 @@
+import { DataJson } from "../CrawlData";
 import "./root.css";
 import { NavLink, useLoaderData } from "react-router-dom";
 
 function Root() {
-  const { data } = useLoaderData();
+  const _data = useLoaderData() as {
+    data: DataJson;
+  };
+  const { data } = _data;
   const sortedKeys = Object.keys(data).sort((entryA, entryB) => {
     const keyA = data[entryA].displayText || entryA;
     const keyB = data[entryB].displayText || entryB;

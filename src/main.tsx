@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { LoaderFunction, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import RootLoader from "./routes/Root.loader";
 import Entry from "./routes/Entry";
@@ -12,12 +12,12 @@ const router = createBrowserRouter([
     // /crawl/2020/
     path: "/",
     element: <Root />,
-    loader: RootLoader,
+    loader: RootLoader as LoaderFunction,
   },
   {
     path: "/:id",
     element: <Entry />,
-    loader: EntryLoader,
+    loader: EntryLoader as LoaderFunction,
   },
 ]);
 

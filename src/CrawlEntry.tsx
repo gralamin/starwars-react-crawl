@@ -24,9 +24,9 @@ const CrawlEntry: FC<CrawlEntryProps> = ({ crawlData }) => {
   };
 
   const onLoad = () => {
-    console.log("On Load called");
+    //console.log("On Load called");
     setTimeout(() => {
-      console.log("On Load timer expired");
+      //console.log("On Load timer expired");
       setLoading(false);
     }, 1000);
   };

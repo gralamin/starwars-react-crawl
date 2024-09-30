@@ -21,7 +21,7 @@ const Crawl: FC<CrawlProps> = ({
 }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("Called timer");
+      //console.log("Called timer");
       onEnd();
     }, timeout);
 

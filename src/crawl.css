@@ -124,7 +124,10 @@ html {
   line-height: 0.8em;
   letter-spacing: -0.05em;
   color: #000;
-  text-shadow: -2px -2px 0 #ebd71c, 2px -2px 0 #ebd71c, -2px 2px 0 #ebd71c,
+  text-shadow:
+    -2px -2px 0 #ebd71c,
+    2px -2px 0 #ebd71c,
+    -2px 2px 0 #ebd71c,
     2px 2px 0 #ebd71c;
   opacity: 0;
   z-index: 1;

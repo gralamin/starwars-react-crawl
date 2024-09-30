@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: <Entry />,
     loader: EntryLoader as LoaderFunction,
   },
-]);
+], { basename: "/crawl/2020/"});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

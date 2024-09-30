@@ -8,31 +8,22 @@ const data = _data as DataJson;
 const testData = data["test"];
 
 describe("Crawl Entry tests", () => {
-    beforeEach(() => {
-        vi.useFakeTimers();
-      });
-    
-      afterEach(() => {
-        vi.useRealTimers();
-      });
-    
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
 
   test("renders loader by default", () => {
-    render(
-        <CrawlEntry 
-            crawlData={testData}
-        />
-    )
+    render(<CrawlEntry crawlData={testData} />);
     const el = screen.getByTestId(/loader/i);
     expect(el).toBeDefined();
   });
 
   test("After finishing loading, shows start button", () => {
-    render(
-        <CrawlEntry 
-            crawlData={testData}
-        />
-    )
+    render(<CrawlEntry crawlData={testData} />);
     vi.advanceTimersByTime(2000);
     const el = screen.getByTestId(/loader/i);
     expect(el).toBeDefined();
